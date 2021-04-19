@@ -146,11 +146,11 @@ export const commentAction = (id, data) => async (
   { Api }
 ) => {
   const api = new Api({ dispatch, getState });
-  const comment = data;
+  const {text} = data;
 
   try {
-    const response =await api.Post(`api/posts/comment/${id}`, {
-      text: comment,
+    const response = await api.Post(`api/posts/comment/${id}`, {
+      comments: text,
     });
     dispatch({
       type: FETCH_SINGLE_POST,

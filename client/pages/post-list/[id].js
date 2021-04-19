@@ -15,7 +15,6 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import ShareIcon from "@material-ui/icons/Share";
 import { Container, Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -136,10 +135,12 @@ const ViewPost = () => {
                     <Grid item smS={12}>
                       <TextField
                         label="Comment"
+                        id="comment"
                         className={classes.main}
                         rowsMax={4}
                         variant="outlined"
                         outline-color="#8d1"
+                        name="comment"
                       />
                       <Button
                         type="submit"
@@ -147,7 +148,12 @@ const ViewPost = () => {
                         fullWidth
                         className={classes.submit}
                         onClick={() =>
-                          dispatch(commentAction(state.singlePost.item._id))
+                          dispatch(
+                            commentAction(
+                              state.singlePost.item._id,
+                              state.singlePost.item.comments
+                            )
+                          )
                         }
                       >
                         Add
